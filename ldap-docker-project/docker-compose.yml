@@ -1,0 +1,29 @@
+version: '3'
+services:
+  ldap-server:
+    image: osixia/openldap:1.5.0
+    container_name: ldap-server
+    environment:
+      LDAP_ORGANISATION: "Example Org"
+      LDAP_DOMAIN: "master-ldap.com"
+      LDAP_ADMIN_PASSWORD: "adminpassword"
+    ports:
+      - "389:389"
+      - "636:636"
+
+  nginx-server:
+    image: tiredofit/nginx-ldap
+    container_name: nginx-server
+    depends_on:
+      - ldap-server
+    environment:
+      LDAP_SERVER: "ldap://ldap-server:389"
+      LDAP_BASE_DN: "dc=master-ldap,dc=com"
+      LDAP_BIND_DN: "cn=admin,dc=master-ldap,dc=com"
+      LDAP_BIND_PW: "adminpassword"
+      LDAP_REQUIRE_GROUP: "false"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./html:/usr/share/nginx/html
