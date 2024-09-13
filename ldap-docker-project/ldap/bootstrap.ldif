@@ -1,0 +1,35 @@
+dn: ou=People,dc=master-ldap,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: uid=user1,ou=People,dc=master-ldap,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: user1
+sn: User
+givenName: Test
+cn: Test User1
+displayName: Test User1
+uidNumber: 1001
+gidNumber: 1001
+userPassword: {SSHA}FP3MJTIMWJDTBHqOJ23lfliUQ3cO00Iy
+gecos: Test User1
+loginShell: /bin/bash
+homeDirectory: /home/user1
+
+dn: uid=user2,ou=People,dc=master-ldap,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: user2
+sn: User
+givenName: Test
+cn: Test User2
+displayName: Test User2
+uidNumber: 1002
+gidNumber: 1002
+userPassword: {SSHA}FP3MJTIMWJDTBHqOJ23lfliUQ3cO00Iy
+gecos: Test User2
+loginShell: /bin/bash
+homeDirectory: /home/user2
