@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  ldap-server:
+    build: ./ldap
+    environment:
+      LDAP_ORGANISATION: "Example Org"
+      LDAP_DOMAIN: "master-ldap.com"
+      LDAP_ADMIN_PASSWORD: "adminpassword"
+    ports:
+      - "389:389"
+      - "636:636"
+
+  nginx-server:
+    build: ./nginx
+    ports:
+      - "8080:80"
