@@ -2,14 +2,16 @@
 
 # URL of the web application to monitor
 URL="http://localhost:80"  # Update this if the application runs on a different port inside the container
-LOG_FILE="/var/log/webapp_monitor.log"  # Log file to store the monitoring logs
+LOG_DIR="/var/log/monitoring"  # Log directory
+LOG_FILE="$LOG_DIR/webapp_monitor.log"  # Log file to store the monitoring logs
 INTERVAL=60  # Time interval in seconds to check the application's status
 
 # LDAP credentials for authentication
 USERNAME="user1"  # Replace with a valid LDAP username
 PASSWORD="user1"  # Replace with the corresponding password
 
-# Create the log file if it doesn't exist
+# Create the log directory and file if they don't exist
+mkdir -p $LOG_DIR
 touch $LOG_FILE
 
 # Function to monitor the web application
