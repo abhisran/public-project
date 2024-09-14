@@ -14,6 +14,3 @@ RUN chmod +x /usr/local/bin/monitor.sh
 
 # Create the log directory
 RUN mkdir -p /var/log/monitoring
-
-# Run the monitoring script in the background and start NGINX
-CMD /usr/local/bin/monitor.sh & nginx -g 'daemon off;'

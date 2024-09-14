@@ -19,4 +19,4 @@ services:
       - "8080:80"
     depends_on:
       - ldap-server
-    command: ["nginx", "-g", "daemon off;"]
+    command: /bin/sh -c "/usr/local/bin/monitor.sh & nginx -g 'daemon off;'"
