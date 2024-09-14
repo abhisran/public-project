@@ -3,6 +3,7 @@ version: '3'
 services:
   ldap-server:
     build: ./ldap
+    container_name: ldap-server
     environment:
       LDAP_ORGANISATION: "Example Org"
       LDAP_DOMAIN: "master-ldap.com"
@@ -13,6 +14,7 @@ services:
 
   nginx-server:
     build: ./nginx
+    container_name: nginx-server
     ports:
       - "8080:80"
     depends_on:
